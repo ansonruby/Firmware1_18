@@ -62,7 +62,7 @@ CE_rl =[        "/api/access/keyboard_access/index.php",      # Enviar Teclado
 #-----------------------------------------------
 #               ID_Tarjeta y IP_servidor Pruebas
 #-----------------------------------------------
-ID_Tarjeta         = 'ABDE16022022b827eb0e1979000030' # dispositivo CF_COL_30
+#ID_Tarjeta         = 'ABDE16022022b827eb0e1979000030' # dispositivo CF_COL_30
 #ID_Tarjeta         = 'ABDE12102021b827eba6aa99000017' # dispositivo CF_COL_17
 #ID_Tarjeta         = 'AAAA01092019b827eb371aaf000001' # dispositivo QR
 #ID_Tarjeta         = 'ABDB23102020b827eb3a24df000002' # dispositivo SL_CHI_41
