@@ -306,32 +306,36 @@ def Ping_Intento_Enviar_Usuarios_Autotizados():
 
     global Hay_Internet
     global Estado_Internet
+    global PP_Mensajes
     if PP_Mensajes:
         print 'Ping antes de enviar'
-    Res_Ping=Ping()
-    if Res_Ping == 'OK':
-        a=Enviar_usuarios_Autorizados_Sin_Internet()
-        if		a == 1 :
-            Hay_Internet = 0
-            Escrivir_Estados('0',28)#estado comunicaion servidor
-            if PP_Mensajes:
-                print "Se enviaron los usuarios y se guardo correctamente"
-        elif	a == 2 :
-            Hay_Internet = 0
-            if PP_Mensajes:
-                print "No hay nada que enviar"
+    Ev = Leer()
+    #print len(Ev)
+    if len(Ev) !=0 :
+        Res_Ping=Ping()
+        if Res_Ping == 'OK':
+            a=Enviar_usuarios_Autorizados_Sin_Internet()
+            if		a == 1 :
+                Hay_Internet = 0
+                Escrivir_Estados('0',28)#estado comunicaion servidor
+                if PP_Mensajes:
+                    print "Se enviaron los usuarios y se guardo correctamente"
+            elif	a == 2 :
+                Hay_Internet = 0
+                if PP_Mensajes:
+                    print "No hay nada que enviar"
 
+            else:
+                if PP_Mensajes:
+                    print "NO fue posiple enviar los usuarios en otra oportunidad con internet"
+
+                Hay_Internet = 1
+                Escrivir_Estados('1',28)#estado comunicaion servidor
+                Estado_Internet = 0
+            #actualizar_usuarios_por();# colocar esta consula 30_05_2019, 16_12_2020:puede demoar demaciado
         else:
             if PP_Mensajes:
-                print "NO fue posiple enviar los usuarios en otra oportunidad con internet"
-
-            Hay_Internet = 1
-            Escrivir_Estados('1',28)#estado comunicaion servidor
-            Estado_Internet = 0
-        #actualizar_usuarios_por();# colocar esta consula 30_05_2019, 16_12_2020:puede demoar demaciado
-    else:
-        if PP_Mensajes:
-            print 'NO hay internet, se sige aurorizando'
+                print 'NO hay internet, se sige aurorizando'
 
 
 def Decision_Torniquete (Res, QR, ID2, Ti,Qr_Te, I_N_S ):

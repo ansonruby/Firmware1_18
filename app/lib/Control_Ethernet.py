@@ -282,7 +282,7 @@ def Usuarios_Activos(T_actual):
             print '-------------------------------------'
             print 'URL :'+ CE_url
 
-        return Get_Post_try_catch('GET_SOLO_CABECERA', CE_url,'', CE_cabeceras, 5)
+        return Get_Post_try_catch('GET_SOLO_CABECERA', CE_url,'', CE_cabeceras, 80)
 
 
 
