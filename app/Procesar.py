@@ -1095,10 +1095,11 @@ while 1:
     #---------------------------------------------------------
     # Proceso 5: enviar usario autorizados sin internet, cuando hay internet y actualizar si no se pudo
     #---------------------------------------------------------
+    """
     if Hay_Internet == 0 :
         Ping_Intento_Enviar_Usuarios_Autotizados()
         #print 'hay internet se puede internat enviar usuarios'
-
+    """
 
 
 

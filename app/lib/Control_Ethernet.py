@@ -67,7 +67,7 @@ CE_rl =[        "/api/access/keyboard_access/index.php",      # Enviar Teclado
 #ID_Tarjeta         = 'AAAA01092019b827eb371aaf000001' # dispositivo QR
 #ID_Tarjeta         = 'ABDB23102020b827eb3a24df000002' # dispositivo SL_CHI_41
 #ID_Tarjeta         = 'ABDB01062020b827ebaa4c01000004' # dispositivo SL_CHI_36
-#ID_Tarjeta         = 'ABDB12022020b827eb5dce1e000014' # dispositivo SL_CHI_12
+#ID_Tarjeta         = 'ABDE12102021b827eb23242e000012' # dispositivo CF_COL_12
 #ID_Tarjeta          = 'ABDB01062020b827eb929bfb000002' # dispositivo SL_CHI_34
 #ID_Tarjeta         = 'ABDB12022020b827eb36f4c1000023' # dispositivo SL_CHI_3
 #ID_Tarjeta         = 'CCCB23102020b827ebc30bd7000001' # dispositivo IF_CHI_01
@@ -123,7 +123,7 @@ def Get_Post_try_catch(peticion, CE_url, CE_datos, CE_cabeceras, tout):
             if P_Mensajes:
                 print 'Error :'+str(CE_peticion.status_code)
                 print CE_peticion.text
-            return 'Error :'+str(CE_peticion.status_code)
+            return 'Error :Access denied' #'Error :'+str(CE_peticion.status_code)
 
     #except requests.ConnectionError, e:
     except :
@@ -165,7 +165,7 @@ def Confimacion_Firmware(T_actual, vercion_Actual_Firmware,LOG):
     #print CE_datos
     #CE_datos ='{"version":"2019.12.3.0","update":"1"}'#Formato actualisacion correcta
     #CE_datos ='{"version":"2019.12.3.0","update":"0","log":"2.3 herror ...."}' #Formato herror
-    return Get_Post_try_catch('POST', CE_url, CE_datos, CE_cabeceras, 4)
+    return Get_Post_try_catch('POST', CE_url, CE_datos, CE_cabeceras, 7)
 
 
 def Veri_Firmware(T_actual, vercion_Actual_Firmware):
@@ -197,7 +197,7 @@ def Veri_Firmware(T_actual, vercion_Actual_Firmware):
     if P_Mensajes:
         print 'Datos :'+ CE_datos
 
-    return Get_Post_try_catch('GET', CE_url, CE_datos, CE_cabeceras, 4)
+    return Get_Post_try_catch('GET', CE_url, CE_datos, CE_cabeceras, 7)
 
 
 def ping ():
@@ -218,7 +218,7 @@ def ping ():
             print '-------------------------------------'
             print 'URL :'+ CE_url
 
-        return Get_Post_try_catch('GET_SIN_PARAMETROS', CE_url, '', '', 2)
+        return Get_Post_try_catch('GET_SIN_PARAMETROS', CE_url, '', '', 7)
 
 
 def envio(dat,T_actual,QR_Te):
@@ -257,8 +257,9 @@ def envio(dat,T_actual,QR_Te):
             print '-------------------------------------'
             print 'URL :'+ CE_url
             print 'Datos :'+ CE_datos
-
-        return Get_Post_try_catch('POST', CE_url, CE_datos, CE_cabeceras, 4)
+        if QR_Te == 3: Get_Post_try_catch('POST', CE_url, CE_datos, CE_cabeceras, 500)
+        if QR_Te == 1: Get_Post_try_catch('POST', CE_url, CE_datos, CE_cabeceras, 7)
+        return Get_Post_try_catch('POST', CE_url, CE_datos, CE_cabeceras, 7)
 
 
 def Usuarios_Activos(T_actual):
@@ -282,7 +283,7 @@ def Usuarios_Activos(T_actual):
             print '-------------------------------------'
             print 'URL :'+ CE_url
 
-        return Get_Post_try_catch('GET_SOLO_CABECERA', CE_url,'', CE_cabeceras, 180)
+        return Get_Post_try_catch('GET_SOLO_CABECERA', CE_url,'', CE_cabeceras, 500)
 
 
 
