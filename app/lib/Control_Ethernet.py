@@ -257,8 +257,8 @@ def envio(dat,T_actual,QR_Te):
             print '-------------------------------------'
             print 'URL :'+ CE_url
             print 'Datos :'+ CE_datos
-        if QR_Te == 3: Get_Post_try_catch('POST', CE_url, CE_datos, CE_cabeceras, 500)
-        if QR_Te == 1: Get_Post_try_catch('POST', CE_url, CE_datos, CE_cabeceras, 7)
+        if QR_Te == 3: return Get_Post_try_catch('POST', CE_url, CE_datos, CE_cabeceras, 500)
+        if QR_Te == 1: return Get_Post_try_catch('POST', CE_url, CE_datos, CE_cabeceras, 7)
         return Get_Post_try_catch('POST', CE_url, CE_datos, CE_cabeceras, 7)
 
 
